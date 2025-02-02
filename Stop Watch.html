@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Navigation Menu</title>
+    <style>
+        /* CSS Styles */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            height: 2000px; /* Added height for scrolling effect */
+        }
+
+        .navbar {
+            position: fixed; /* Fixed position */
+            top: 0;
+            width: 100%;
+            background-color: #333; /* Default background color */
+            z-index: 1000; /* Ensure it stays on top */
+            transition: background-color 0.3s; /* Smooth transition */
+        }
+
+        .nav-links {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .nav-links li {
+            display: inline;
+        }
+
+        .nav-links a {
+            display: inline-block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .nav-links a:hover {
+            background-color: #ddd; /* Change background on hover */
+            color: black; /* Change text color on hover */
+        }
+
+        /* Change background when scrolled */
+        .scrolled {
+            background-color: #222; /* Darker background when scrolled */
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="#home" class="nav-link">Home</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#services" class="nav-link">Services</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <h1>Welcome to Our Website</h1>
+        <p>Scroll down to see the navigation bar change color!</p>
+    </div>
+
+    <script>
+        // JavaScript for interactivity
+        const navbar = document.querySelector('.navbar');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) { // Change this value based on when you want the effect to start
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Highlight active link on hover
+        const links = document.querySelectorAll('.nav-link');
+
+        links.forEach(link => {
+            link.addEventListener('mouseover', () => {
+                link.style.color = '#04AA6D'; // Change color on hover
+            });
+            
+            link.addEventListener('mouseout', () => {
+                link.style.color = ''; // Reset color
+            });
+        });
+    </script>
+
+</body>
+</html>
